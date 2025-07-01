@@ -90,7 +90,7 @@ export function Testimonials() {
 								))}
 							</div>
 							<blockquote className="text-xl text-gray-700 mb-8 leading-relaxed">
-								"{testimonials[currentIndex].content}"
+								&quot;{testimonials[currentIndex].content}&quot;
 							</blockquote>
 							<div className="flex items-center">
 								<Avatar>
