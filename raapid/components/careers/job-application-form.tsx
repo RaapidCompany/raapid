@@ -131,7 +131,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
           <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
           <h3 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h3>
           <p className="text-gray-600 mb-6">
-            Thank you for your interest in the {job.title} position. We'll review your application and get back to you
+            Thank you for your interest in the {job.title} position. We&apos;ll review your application and get back to you
             soon.
           </p>
           <Button onClick={onClose} className="bg-green-600 hover:bg-green-700">

@@ -127,7 +127,7 @@ export default function Container() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Why Work at Raapid?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We're building more than just a delivery service – we&apos;re creating a sustainable future.
+              We&apos;re building more than just a delivery service – we&apos;re creating a sustainable future.
             </p>
           </motion.div>
 
