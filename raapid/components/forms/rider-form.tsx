@@ -257,7 +257,7 @@ export function RiderForm({ isOpen, onClose }: RiderFormProps) {
               </div>
             ) : null}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Valid Driver's License *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Valid Driver&apos;s License *</label>
               <select
                 value={formData.drivingLicense}
                 onChange={(e) => handleInputChange("drivingLicense", e.target.value)}

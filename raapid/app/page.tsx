@@ -7,7 +7,7 @@ import { Testimonials } from "@/components/home/testimonials"
 import { EnvironmentalImpact } from "@/components/home/environmental-impact"
 import { Pricing } from "@/components/home/pricing"
 import { CallToAction } from "@/components/home/call-to-action"
-import { Footer } from "@/components/home/footer"
+import { Footer } from "@/components/layout/footer"
 
 export default function Home() {
   return (
