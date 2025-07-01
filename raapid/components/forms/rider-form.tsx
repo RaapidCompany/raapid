@@ -266,7 +266,7 @@ export function RiderForm({ isOpen, onClose }: RiderFormProps) {
               >
                 <option value="">Select an option</option>
                 <option value="yes">Yes, I have a valid license</option>
-                <option value="no">No, I don't have a license</option>
+                <option value="no">No, I don&apos;t have a license</option>
                 <option value="expired">I have an expired license</option>
               </select>
             </div>
