@@ -30,7 +30,7 @@ export function Hero  () {
               </h1>
             </motion.div>
 
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -62,7 +62,7 @@ export function Hero  () {
                 Join as a Rider
                 <Play className="ml-2 h-5 w-5" />
               </Button>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
 
