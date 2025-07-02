@@ -7,7 +7,7 @@ import { ArrowRight, Play, Clock, Star, MapPin, Package, Pill, UtensilsCrossed }
 import { DemoForm } from "@/components/forms/demo-form"
 import { RiderForm } from "@/components/forms/rider-form"
 
-function Hero() {
+export function Hero() {
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false)
   const [isRiderFormOpen, setIsRiderFormOpen] = useState(false)
 
@@ -119,6 +119,7 @@ function Hero() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-[#555879] to-[#98a1bc] hover:from-[#4a4d6b] hover:to-[#8a94b0] text-white px-8 py-4 text-lg shadow-lg"
+                  onClick={() => setIsDemoFormOpen(true)}
                 >
                   Start Ordering
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -236,5 +237,3 @@ function Hero() {
     </>
   )
 }
-
-export default Hero

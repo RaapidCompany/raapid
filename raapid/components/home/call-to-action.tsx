@@ -47,7 +47,7 @@ export function CallToAction() {
             Ready to Join the <span className="text-[#f4ebd3]">Raapid Revolution?</span>
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-            Whether you need fast delivery, want to grow your business, or looking to earn money - we've got you
+            Whether you need fast delivery, want to grow your business, or looking to earn money - we&apos;ve got you
             covered.
           </p>
 

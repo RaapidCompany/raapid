@@ -53,15 +53,15 @@ export function Footer() {
             <div className="space-y-2">
               <div className="flex items-center text-white/80">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>hello@raapid.com</span>
+                <span>hello@raapid.company</span>
               </div>
               <div className="flex items-center text-white/80">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <span>+2347040354205</span>
               </div>
               <div className="flex items-center text-white/80">
                 <MapPin className="h-4 w-4 mr-2" />
-                <span>San Francisco, CA</span>
+                <span>Lagos, Nigeria</span>
               </div>
             </div>
           </motion.div>
