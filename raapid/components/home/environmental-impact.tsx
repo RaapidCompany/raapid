@@ -1,12 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Leaf, Zap, TreePine } from "lucide-react"
+import { Users, TrendingUp, Heart, Zap } from "lucide-react"
 
 export function EnvironmentalImpact() {
   return (
-    <section className="py-20 bg-green-600 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-r from-[#555879] via-[#98a1bc] to-[#555879] text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#f4ebd3] rounded-full"></div>
+        <div className="absolute bottom-20 right-20 w-24 h-24 bg-[#ded3c4] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#f4ebd3] rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -14,33 +21,33 @@ export function EnvironmentalImpact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">See Your CO₂ Savings</h2>
-          <p className="text-xl text-green-100 max-w-2xl mx-auto">
-            Every delivery makes a difference. Track your environmental impact in real-time.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Making a Real Impact</h2>
+          <p className="text-xl text-[#f4ebd3]/90 max-w-2xl mx-auto">
+            Every order creates a ripple effect of positive change in our community
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-[#f4ebd3]/20"
           >
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Leaf className="h-10 w-10 text-white" />
+            <div className="w-16 h-16 bg-[#f4ebd3]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Users className="h-8 w-8 text-[#f4ebd3]" />
             </div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold mb-2"
+              className="text-3xl font-bold mb-2"
             >
-              2,847
+              50K+
             </motion.div>
-            <p className="text-green-100">Tons of CO₂ saved this year</p>
+            <p className="text-[#f4ebd3]/80 text-sm">Happy customers served</p>
           </motion.div>
 
           <motion.div
@@ -48,21 +55,21 @@ export function EnvironmentalImpact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-[#f4ebd3]/20"
           >
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Zap className="h-10 w-10 text-white" />
+            <div className="w-16 h-16 bg-[#f4ebd3]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <TrendingUp className="h-8 w-8 text-[#f4ebd3]" />
             </div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold mb-2"
+              className="text-3xl font-bold mb-2"
             >
-              1.2M
+              40%
             </motion.div>
-            <p className="text-green-100">Miles delivered emission-free</p>
+            <p className="text-[#f4ebd3]/80 text-sm">Average sales increase</p>
           </motion.div>
 
           <motion.div
@@ -70,23 +77,62 @@ export function EnvironmentalImpact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-[#f4ebd3]/20"
           >
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <TreePine className="h-10 w-10 text-white" />
+            <div className="w-16 h-16 bg-[#f4ebd3]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Heart className="h-8 w-8 text-[#f4ebd3]" />
             </div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.9 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold mb-2"
+              className="text-3xl font-bold mb-2"
             >
-              15,000
+              $30+
             </motion.div>
-            <p className="text-green-100">Trees worth of carbon offset</p>
+            <p className="text-[#f4ebd3]/80 text-sm">Average hourly earnings</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-[#f4ebd3]/20"
+          >
+            <div className="w-16 h-16 bg-[#f4ebd3]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Zap className="h-8 w-8 text-[#f4ebd3]" />
+            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.1 }}
+              viewport={{ once: true }}
+              className="text-3xl font-bold mb-2"
+            >
+              100%
+            </motion.div>
+            <p className="text-[#f4ebd3]/80 text-sm">Zero emission deliveries</p>
           </motion.div>
         </div>
+
+        {/* Environmental Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-2xl mx-auto border border-[#f4ebd3]/20">
+            <h3 className="text-2xl font-bold mb-4">🌱 Every Delivery Counts</h3>
+            <p className="text-[#f4ebd3]/90 leading-relaxed">
+              By choosing Raapid, you're not just getting faster delivery - you're supporting local businesses, helping
+              riders earn better wages, and contributing to a cleaner, more sustainable city.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

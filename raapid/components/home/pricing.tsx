@@ -3,8 +3,6 @@
 import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { DemoForm } from "@/components/forms/demo-form"
-import { useState } from "react"
 
 const plans = [
   {
@@ -20,6 +18,8 @@ const plans = [
       "Standard reporting",
     ],
     popular: false,
+    bgColor: "bg-white",
+    borderColor: "border-[#ded3c4]",
   },
   {
     name: "Business",
@@ -36,6 +36,8 @@ const plans = [
       "Custom branding",
     ],
     popular: true,
+    bgColor: "bg-gradient-to-br from-[#555879] to-[#98a1bc]",
+    borderColor: "border-[#555879]",
   },
   {
     name: "Enterprise",
@@ -52,84 +54,89 @@ const plans = [
       "Advanced security",
     ],
     popular: false,
+    bgColor: "bg-white",
+    borderColor: "border-[#ded3c4]",
   },
 ]
 
 export function Pricing() {
-  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false)
-
   return (
-    <>
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose the plan that fits your business needs. Scale up or down anytime.
-            </p>
-          </motion.div>
+    <section className="py-20 bg-gradient-to-br from-[#f4ebd3]/30 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Simple, Transparent{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#555879] to-[#98a1bc]">Pricing</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Choose the plan that fits your business needs. Scale up or down anytime.
+          </p>
+        </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`relative bg-white rounded-2xl p-8 shadow-lg border-2 ${
-                  plan.popular ? "border-green-500 ring-4 ring-green-100" : "border-gray-200"
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600">{plan.period}</span>
-                  </div>
-                  <p className="text-gray-600">{plan.description}</p>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative ${plan.bgColor} rounded-3xl p-8 shadow-lg border-2 ${plan.borderColor} ${
+                plan.popular ? "ring-4 ring-[#555879]/20 scale-105" : ""
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-[#555879] to-[#98a1bc] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </span>
                 </div>
+              )}
 
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="text-center mb-8">
+                <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? "text-white" : "text-gray-900"}`}>
+                  {plan.name}
+                </h3>
+                <div className="mb-4">
+                  <span className={`text-4xl font-bold ${plan.popular ? "text-white" : "text-gray-900"}`}>
+                    {plan.price}
+                  </span>
+                  <span className={`${plan.popular ? "text-[#f4ebd3]" : "text-gray-600"}`}>{plan.period}</span>
+                </div>
+                <p className={`${plan.popular ? "text-[#f4ebd3]/90" : "text-gray-600"}`}>{plan.description}</p>
+              </div>
 
-                <Button
-                  className={`w-full ${
-                    plan.popular
-                      ? "bg-green-600 hover:bg-green-700 text-white"
-                      : "bg-gray-100 hover:bg-gray-200 text-gray-900"
-                  }`}
-                  size="lg"
-                  onClick={() => setIsDemoFormOpen}
-                >
-                  {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
-                </Button>
-              </motion.div>
-            ))}
-          </div>
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center">
+                    <Check
+                      className={`h-5 w-5 mr-3 flex-shrink-0 ${plan.popular ? "text-[#f4ebd3]" : "text-[#555879]"}`}
+                    />
+                    <span className={`${plan.popular ? "text-white" : "text-gray-700"}`}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                className={`w-full ${
+                  plan.popular
+                    ? "bg-[#f4ebd3] hover:bg-[#ded3c4] text-[#555879]"
+                    : "bg-gradient-to-r from-[#555879] to-[#98a1bc] hover:from-[#4a4d6b] hover:to-[#8a94b0] text-white"
+                }`}
+                size="lg"
+              >
+                {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+              </Button>
+            </motion.div>
+          ))}
         </div>
-      </section>
-      <DemoForm isOpen={isDemoFormOpen} onClose={() => setIsDemoFormOpen(false)} />
-    </>
+      </div>
+    </section>
   )
 }
