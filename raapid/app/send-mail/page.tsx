@@ -1,52 +1,43 @@
-"use server";
+"use client";
 
-import { Resend } from "resend";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { EmailTemplate } from "./email-template";
+import { useState } from "react";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export default function SendMailPage() {
+  const [sending, setSending] = useState(false);
 
-async function sendEmail(formData: FormData) {
-  "use server";
+  async function handleSubmit(formData: FormData) {
+    setSending(true);
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        body: formData,
+      });
 
-  const senderName = formData.get("senderName") as string;
-  const senderEmail = formData.get("senderEmail") as string;
-  const recipientEmail = formData.get("recipientEmail") as string;
-  const subject = formData.get("subject") as string;
-  const message = formData.get("message") as string;
+      const result = await response.json();
 
-  if (!senderName || !senderEmail || !recipientEmail || !subject || !message) {
-    return { success: false, error: "All fields are required" };
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send email");
+      }
+
+      alert("Email sent successfully!");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email. Please try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
-  try {
-    const data = await resend.emails.send({
-      from: `${senderName} <${process.env.RESEND_FROM_EMAIL}>`,
-      to: [recipientEmail],
-      subject: subject,
-      react: EmailTemplate({
-        senderName,
-        message,
-        senderEmail,
-      }),
-    });
-
-    return { success: true, data };
-  } catch (error) {
-    return { success: false, error };
-  }
-}
-
-export default async function SendMailPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center">Send Email</h1>
 
-        <form action={sendEmail} className="space-y-6">
+        <form action={handleSubmit} className="space-y-6">
           <div>
             <Label htmlFor="senderName">Your Name</Label>
             <Input
@@ -105,8 +96,9 @@ export default async function SendMailPage() {
           <Button
             type="submit"
             className="w-full bg-green-600 text-white"
+            disabled={sending}
           >
-            Send Email
+            {sending ? "Sending..." : "Send Email"}
           </Button>
         </form>
       </div>
