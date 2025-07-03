@@ -296,7 +296,7 @@ const DashboardMockup = () => (
     <div className="space-y-4">
       <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
         <div className="text-2xl font-bold mb-1">$2,847</div>
-        <div className="text-sm text-gray-300">Today's Revenue</div>
+        <div className="text-sm text-gray-300">Today&apos;s Revenue</div>
         <div className="text-xs text-amber-400 mt-1">↗ +23% vs yesterday</div>
       </div>
 
@@ -341,7 +341,7 @@ const RiderMockup = () => (
 
     <div className="bg-gradient-to-r from-gray-900 to-black rounded-xl p-4 text-white mb-4">
       <div className="text-2xl font-bold mb-1">$127.50</div>
-      <div className="text-sm text-gray-300">Today's Earnings</div>
+      <div className="text-sm text-gray-300">Today&apos;s Earnings</div>
       <div className="text-xs text-amber-400 mt-1">5.5 hours • $23.18/hour</div>
     </div>
 

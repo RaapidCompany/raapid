@@ -128,7 +128,7 @@ export function EnvironmentalImpact() {
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-2xl mx-auto border border-white/20">
             <h3 className="text-2xl font-bold mb-4">🌱 Every Delivery Counts</h3>
             <p className="text-gray-300 leading-relaxed">
-              By choosing Raapid, you're not just getting faster delivery - you're supporting local businesses, helping
+              By choosing Raapid, you&apos;re not just getting faster delivery - you&apos;re supporting local businesses, helping
               riders earn better wages, and contributing to a cleaner, more sustainable city.
             </p>
           </div>
