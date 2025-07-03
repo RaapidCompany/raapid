@@ -8,21 +8,21 @@ const steps = [
     icon: Search,
     title: "Browse & Order",
     description: "Choose from restaurants, stores, or pharmacies and place your order in seconds",
-    color: "bg-[#f4ebd3]",
-    iconColor: "text-[#555879]",
+    color: "bg-gray-100",
+    iconColor: "text-gray-900",
   },
   {
     icon: Clock,
     title: "We Prepare Fast",
     description: "Your order is prepared immediately while we dispatch the nearest available rider",
-    color: "bg-[#ded3c4]",
-    iconColor: "text-[#555879]",
+    color: "bg-amber-100",
+    iconColor: "text-amber-600",
   },
   {
     icon: Truck,
     title: "Lightning Delivery",
     description: "Track your order in real-time as our electric bikes deliver directly to your door",
-    color: "bg-[#98a1bc]",
+    color: "bg-gray-900",
     iconColor: "text-white",
   },
 ]
@@ -32,25 +32,25 @@ const deliveryTypes = [
     icon: UtensilsCrossed,
     title: "Food Delivery",
     description: "Hot meals from 500+ restaurants",
-    color: "text-[#555879]",
+    color: "text-gray-900",
   },
   {
     icon: Package,
     title: "Package Delivery",
     description: "Secure parcel and e-commerce delivery",
-    color: "text-[#98a1bc]",
+    color: "text-amber-600",
   },
   {
     icon: Pill,
     title: "Pharmacy Delivery",
     description: "Prescription and health products",
-    color: "text-[#555879]",
+    color: "text-gray-600",
   },
 ]
 
 export function HowItWorks() {
   return (
-    <section className="py-20 bg-gradient-to-br from-[#f4ebd3]/30 to-white">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,9 +61,7 @@ export function HowItWorks() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             From Order to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#555879] to-[#98a1bc]">
-              Your Door
-            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-amber-500">Your Door</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Getting what you need has never been this simple or fast
@@ -87,7 +85,7 @@ export function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg text-center border border-[#ded3c4]/30"
+                className="bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-200"
               >
                 <IconComponent className={`h-12 w-12 ${type.color} mx-auto mb-4`} />
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{type.title}</h3>
@@ -117,7 +115,7 @@ export function HowItWorks() {
                   <IconComponent className={`h-12 w-12 ${step.iconColor}`} />
                 </motion.div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#ded3c4]/30">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
@@ -129,9 +127,9 @@ export function HowItWorks() {
                       whileInView={{ scaleX: 1 }}
                       transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
                       viewport={{ once: true }}
-                      className="w-full h-1 bg-gradient-to-r from-[#555879] to-[#98a1bc] relative origin-left"
+                      className="w-full h-1 bg-gradient-to-r from-gray-900 to-amber-500 relative origin-left"
                     >
-                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#98a1bc] rounded-full"></div>
+                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-amber-500 rounded-full"></div>
                     </motion.div>
                   </div>
                 )}
@@ -148,7 +146,7 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="inline-flex items-center bg-gradient-to-r from-[#555879] to-[#98a1bc] text-white rounded-full px-8 py-4 text-lg font-bold shadow-xl">
+          <div className="inline-flex items-center bg-gradient-to-r from-gray-900 to-black text-white rounded-full px-8 py-4 text-lg font-bold shadow-xl">
             <Clock className="h-6 w-6 mr-3" />
             Average delivery time: 15 minutes
           </div>

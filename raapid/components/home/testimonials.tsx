@@ -16,7 +16,7 @@ const testimonials = [
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
     type: "customer",
-    bgColor: "bg-gradient-to-br from-[#f4ebd3] to-[#ded3c4]",
+    bgColor: "bg-gradient-to-br from-white to-gray-50",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const testimonials = [
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
     type: "business",
-    bgColor: "bg-gradient-to-br from-[#98a1bc]/20 to-[#555879]/20",
+    bgColor: "bg-gradient-to-br from-amber-50 to-amber-100",
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const testimonials = [
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
     type: "rider",
-    bgColor: "bg-gradient-to-br from-[#ded3c4]/30 to-[#98a1bc]/30",
+    bgColor: "bg-gradient-to-br from-gray-100 to-gray-200",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const testimonials = [
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
     type: "customer",
-    bgColor: "bg-gradient-to-br from-[#f4ebd3] to-[#ded3c4]",
+    bgColor: "bg-gradient-to-br from-white to-gray-50",
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const testimonials = [
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
     type: "business",
-    bgColor: "bg-gradient-to-br from-[#98a1bc]/20 to-[#555879]/20",
+    bgColor: "bg-gradient-to-br from-amber-50 to-amber-100",
   },
 ]
 
@@ -82,18 +82,18 @@ export function Testimonials() {
   const getTypeInfo = (type: string) => {
     switch (type) {
       case "customer":
-        return { label: "Happy Customer", color: "text-[#555879]", bg: "bg-[#f4ebd3]" }
+        return { label: "Happy Customer", color: "text-gray-900", bg: "bg-gray-100" }
       case "business":
-        return { label: "Partner Business", color: "text-[#555879]", bg: "bg-[#98a1bc]/20" }
+        return { label: "Partner Business", color: "text-amber-700", bg: "bg-amber-100" }
       case "rider":
-        return { label: "Raapid Rider", color: "text-[#555879]", bg: "bg-[#ded3c4]" }
+        return { label: "Raapid Rider", color: "text-gray-900", bg: "bg-gray-200" }
       default:
         return { label: "User", color: "text-gray-600", bg: "bg-gray-100" }
     }
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#f4ebd3]/30 to-white">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -104,7 +104,7 @@ export function Testimonials() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Real Stories from{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#555879] to-[#98a1bc]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-amber-500">
               Real People
             </span>
           </h2>
@@ -119,15 +119,15 @@ export function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className={`${testimonials[currentIndex].bgColor} rounded-3xl p-8 shadow-xl relative overflow-hidden border border-[#ded3c4]/30`}
+              className={`${testimonials[currentIndex].bgColor} rounded-3xl p-8 shadow-xl relative overflow-hidden border border-gray-200`}
             >
               {/* Quote Icon */}
-              <Quote className="absolute top-6 right-6 h-12 w-12 text-[#555879]/10" />
+              <Quote className="absolute top-6 right-6 h-12 w-12 text-gray-900/10" />
 
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-[#555879] fill-current" />
+                    <Star key={i} className="h-5 w-5 text-amber-500 fill-current" />
                   ))}
                 </div>
                 <span
@@ -138,7 +138,7 @@ export function Testimonials() {
               </div>
 
               <blockquote className="text-xl text-gray-800 mb-8 leading-relaxed font-medium">
-                &quot;{testimonials[currentIndex].content}&quot;
+                "{testimonials[currentIndex].content}"
               </blockquote>
 
               <div className="flex items-center">
@@ -162,9 +162,9 @@ export function Testimonials() {
               variant="outline"
               size="sm"
               onClick={prevTestimonial}
-              className="rounded-full bg-white shadow-lg hover:shadow-xl border-[#ded3c4] hover:bg-[#f4ebd3]"
+              className="rounded-full bg-white shadow-lg hover:shadow-xl border-gray-200 hover:bg-gray-50"
             >
-              <ChevronLeft className="h-4 w-4 text-[#555879]" />
+              <ChevronLeft className="h-4 w-4 text-gray-900" />
             </Button>
             <div className="flex gap-2">
               {testimonials.map((_, index) => (
@@ -173,8 +173,8 @@ export function Testimonials() {
                   onClick={() => setCurrentIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? "bg-gradient-to-r from-[#555879] to-[#98a1bc] scale-125"
-                      : "bg-[#ded3c4] hover:bg-[#98a1bc]"
+                      ? "bg-gradient-to-r from-gray-900 to-amber-500 scale-125"
+                      : "bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               ))}
@@ -183,9 +183,9 @@ export function Testimonials() {
               variant="outline"
               size="sm"
               onClick={nextTestimonial}
-              className="rounded-full bg-white shadow-lg hover:shadow-xl border-[#ded3c4] hover:bg-[#f4ebd3]"
+              className="rounded-full bg-white shadow-lg hover:shadow-xl border-gray-200 hover:bg-gray-50"
             >
-              <ChevronRight className="h-4 w-4 text-[#555879]" />
+              <ChevronRight className="h-4 w-4 text-gray-900" />
             </Button>
           </div>
         </div>
