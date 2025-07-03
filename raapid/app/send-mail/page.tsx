@@ -38,7 +38,7 @@ export default function SendMailPage() {
         <h1 className="text-3xl font-bold mb-8 text-center">Send Email</h1>
 
         <form action={handleSubmit} className="space-y-6">
-          <div>
+          {/* <div>
             <Label htmlFor="senderName">Your Name</Label>
             <Input
               type="text"
@@ -58,7 +58,7 @@ export default function SendMailPage() {
               required
               className="mt-1"
             />
-          </div>
+          </div> */}
 
           <div>
             <Label htmlFor="recipientEmail">Recipient Email</Label>
@@ -67,6 +67,7 @@ export default function SendMailPage() {
               id="recipientEmail"
               name="recipientEmail"
               required
+              placeholder="name@example.com"
               className="mt-1"
             />
           </div>
@@ -78,6 +79,7 @@ export default function SendMailPage() {
               id="subject"
               name="subject"
               required
+              placeholder="Subject"
               className="mt-1"
             />
           </div>
@@ -89,13 +91,14 @@ export default function SendMailPage() {
               name="message"
               rows={6}
               required
+              placeholder="Type your message here..."
               className="mt-1"
             />
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-green-600 text-white"
+            className="w-full bg-amber-600 text-white"
             disabled={sending}
           >
             {sending ? "Sending..." : "Send Email"}

@@ -7,13 +7,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
-    const senderName = formData.get('senderName') as string;
-    const senderEmail = formData.get('senderEmail') as string;
+    // Hardcoded sender details
+    const senderName = "Raapid Team";
+    const senderEmail = "oyebamijo@raapid.company";
     const recipientEmail = formData.get('recipientEmail') as string;
     const subject = formData.get('subject') as string;
     const message = formData.get('message') as string;
 
-    if (!senderName || !senderEmail || !recipientEmail || !subject || !message) {
+    if (!recipientEmail || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -24,11 +25,11 @@ export async function POST(req: Request) {
       from: `${senderName} <${process.env.RESEND_FROM_EMAIL}>`,
       to: [recipientEmail],
       subject: subject,
-      react: await EmailTemplate({ 
+      react: await Promise.resolve(EmailTemplate({
         senderName,
         message,
-        senderEmail 
-      }),
+        senderEmail
+      })),
     });
 
     return NextResponse.json({ success: true, data });
