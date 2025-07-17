@@ -134,7 +134,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
             Thank you for your interest in the {job.title} position. We&apos;ll review your application and get back to you
             soon.
           </p>
-          <Button onClick={onClose} className="bg-green-600 hover:bg-green-700">
+          <Button onClick={onClose} className="bg-[#101010]">
             Close
           </Button>
         </motion.div>
@@ -282,7 +282,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
           <Button variant="outline" onClick={onClose} className="bg-transparent">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-green-600 hover:bg-green-700">
+          <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-[#101010] text-white">
             {isSubmitting ? "Submitting..." : "Submit Application"}
           </Button>
         </div>
