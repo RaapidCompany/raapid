@@ -154,6 +154,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-xl font-bold text-gray-900">Apply for {job.title}</h2>
+            <p className="text-[12px] text-gray-700 pb-1">{job.description}</p>
             <p className="text-sm text-gray-600">
               {job.department} • {job.location}
             </p>
