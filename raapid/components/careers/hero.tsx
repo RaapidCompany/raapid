@@ -13,7 +13,7 @@ export default function Hero() {
             <div className="absolute top-8 left-16">
               <div className="w-16 h-16 overflow-hidden border-4 border-white rounded-full shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=64&width=64"
+                  src="/careers1.jpg"
                   alt="Team member"
                   width={64}
                   height={64}
@@ -26,7 +26,7 @@ export default function Hero() {
             <div className="absolute top-4 right-20">
               <div className="w-20 h-20 overflow-hidden border-4 border-white rounded-full shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src="/careers2.jpg"
                   alt="Team member"
                   width={80}
                   height={80}
@@ -39,7 +39,7 @@ export default function Hero() {
             <div className="absolute top-32 left-8">
               <div className="overflow-hidden border-4 border-white rounded-full shadow-lg w-18 h-18">
                 <Image
-                  src="/placeholder.svg?height=72&width=72"
+                  src="/careers3.jpg"
                   alt="Team member"
                   width={72}
                   height={72}
@@ -52,7 +52,7 @@ export default function Hero() {
             <div className="absolute top-24 right-8">
               <div className="w-16 h-16 overflow-hidden border-4 border-white rounded-full shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=64&width=64"
+                  src="/careers1.jpg"
                   alt="Team member"
                   width={64}
                   height={64}
@@ -65,7 +65,7 @@ export default function Hero() {
             <div className="absolute bottom-16 left-24">
               <div className="overflow-hidden border-4 border-white rounded-full shadow-lg w-14 h-14">
                 <Image
-                  src="/placeholder.svg?height=56&width=56"
+                  src="/careers2.jpg"
                   alt="Team member"
                   width={56}
                   height={56}
@@ -78,7 +78,7 @@ export default function Hero() {
             <div className="absolute bottom-8 right-16">
               <div className="w-16 h-16 overflow-hidden border-4 border-white rounded-full shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=64&width=64"
+                  src="/careers3.jpg"
                   alt="Team member"
                   width={64}
                   height={64}

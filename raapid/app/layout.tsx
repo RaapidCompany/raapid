@@ -17,15 +17,15 @@ export const metadata: Metadata = {
   description: "Revolutionizing delivery with ultra-fast, eco-friendly e-bike logistics for modern cities.",
   keywords: ["e-bike delivery", "electric bike logistics", "sustainable courier", "Raapid", "green delivery"],
   authors: [{ name: "Raapid" }],
-  metadataBase: new URL("https://raapid.vercel.app"), // change to your live domain
+  metadataBase: new URL("https://raapid.company"), // change to your live domain
   openGraph: {
     title: "Raapid – E-Bike Delivery Redefined",
     description: "Swift, reliable, and sustainable deliveries powered by electric bikes.",
-    url: "https://raapid.vercel.app", // change to your live domain
+    url: "https://raapid.company", // change to your live domain
     siteName: "Raapid",
     images: [
       {
-        url: "/og-image.PNG", // Put og-image.jpg inside the public folder
+        url: "/og-image.jpg", // Put og-image.jpg inside the public folder
         width: 1200,
         height: 630,
         alt: "Raapid delivery hero image",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Raapid – E-Bike Delivery Redefined",
     description: "Swift, reliable, and sustainable deliveries powered by electric bikes.",
-    images: ["/og-image.PNG"],
+    images: ["/og-image.jpg"],
     creator: "@RaapidHQ", // optional
   },
 };
