@@ -31,6 +31,12 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
+  const [interviewAnswers, setInterviewAnswers] = useState({
+    technical: "",
+    behavioral: "",
+    situational: "",
+    motivation: "",
+  })
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -78,6 +84,10 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
     }
   }
 
+  const handleInterviewChange = (field: string, value: string) => {
+    setInterviewAnswers((prev) => ({ ...prev, [field]: value }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -103,11 +113,25 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
         experience_years: Number.parseInt(formData.experienceYears) || 0,
         location: formData.location,
         availability: formData.availability,
+        // Interview answers
+        technical: interviewAnswers.technical,
+        behavioral: interviewAnswers.behavioral,
+        situational: interviewAnswers.situational,
+        motivation: interviewAnswers.motivation,
       }
 
       const { error: insertError } = await supabase.from("job_applications").insert([applicationData])
 
       if (insertError) throw insertError
+
+      // Send application data to API for email notification
+      await fetch("/api/careers/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(applicationData),
+      })
 
       setIsSubmitted(true)
     } catch (error) {
@@ -134,7 +158,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
             Thank you for your interest in the {job.title} position. We&apos;ll review your application and get back to you
             soon.
           </p>
-          <Button onClick={onClose} className="bg-[#101010]">
+          <Button onClick={onClose} className="bg-[#101010] text-white">
             Close
           </Button>
         </motion.div>
@@ -270,6 +294,48 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
                 onChange={(e) => handleInputChange("coverLetter", e.target.value)}
                 placeholder="Tell us why you're interested in this position and what makes you a great fit..."
                 rows={4}
+                required
+              />
+            </div>
+
+            {/* Interview Questions */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Technical Question *</label>
+              <Textarea
+                value={interviewAnswers.technical}
+                onChange={(e) => handleInterviewChange("technical", e.target.value)}
+                placeholder="Describe a technical challenge you've solved."
+                rows={3}
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Behavioral Question *</label>
+              <Textarea
+                value={interviewAnswers.behavioral}
+                onChange={(e) => handleInterviewChange("behavioral", e.target.value)}
+                placeholder="Tell us about a time you worked in a team."
+                rows={3}
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Situational Question *</label>
+              <Textarea
+                value={interviewAnswers.situational}
+                onChange={(e) => handleInterviewChange("situational", e.target.value)}
+                placeholder="How would you handle a tight deadline?"
+                rows={3}
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Motivation Question *</label>
+              <Textarea
+                value={interviewAnswers.motivation}
+                onChange={(e) => handleInterviewChange("motivation", e.target.value)}
+                placeholder="Why do you want to work here?"
+                rows={3}
                 required
               />
             </div>

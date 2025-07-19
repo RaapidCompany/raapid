@@ -19,6 +19,10 @@ export interface JobApplication {
   location: string
   availability: string
   created_at?: string
+  technical?: string
+  behavioral?: string
+  situational?: string
+  motivation?: string
 }
 
 export interface Job {
