@@ -104,7 +104,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
       }
 
       const applicationData: Omit<JobApplication, "id" | "created_at"> = {
-        job_id: job.id,
+        job_id: job.id === "other" ? null : job.id,
         first_name: formData.firstName,
         last_name: formData.lastName,
         email: formData.email,
@@ -118,7 +118,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
         behavioral: interviewAnswers.behavioral,
         situational: interviewAnswers.situational,
         motivation: interviewAnswers.motivation,
-        preferred_salary: formData.preferredSalary, // new field
+        preferred_salary: formData.preferredSalary,
       }
 
       const { error: insertError } = await supabase.from("job_applications").insert([applicationData])
@@ -135,8 +135,8 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
       })
 
       setIsSubmitted(true)
-    } catch (error) {
-      console.error("Error submitting application:", error)
+    } catch (error: any) {
+      console.error("Error submitting application:", error, error?.message, error?.response);
       setError("Failed to submit application. Please try again.")
     } finally {
       setIsSubmitting(false)
@@ -190,7 +190,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 max-h-96 overflow-y-auto">
+        <form onSubmit={handleSubmit} className="relative p-6 max-h-96 overflow-y-auto">
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -342,27 +342,27 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Salary Range</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Monthly Salary Range</label>
               <Input
                 value={formData.preferredSalary}
                 onChange={(e) => handleInputChange("preferredSalary", e.target.value)}
-                placeholder="e.g. $40,000 - $60,000"
+                placeholder="e.g. NGN40,000 - NGN60,000"
               />
             </div>
 
             {error && <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md">{error}</div>}
           </div>
-        </form>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t bg-gray-50">
-          <Button variant="outline" onClick={onClose} className="bg-transparent">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-[#101010] text-white">
-            {isSubmitting ? "Submitting..." : "Submit Application"}
-          </Button>
-        </div>
+          <div className="flex items-center justify-between py-6 w-full">
+            <Button variant="outline" onClick={onClose} className="bg-transparent">
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-[#101010] text-white">
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </Button>
+          </div>
+        </form>
+  
       </motion.div>
     </div>
   )

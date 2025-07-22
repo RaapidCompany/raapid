@@ -17,6 +17,9 @@ export default function Container() {
   const [isApplicationFormOpen, setIsApplicationFormOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState("all")
+  const [otherInput, setOtherInput] = useState("")
+  const [otherSubmitting, setOtherSubmitting] = useState(false)
+  const [otherSuccess, setOtherSuccess] = useState(false)
 
   useEffect(() => {
     fetchJobs()
@@ -65,17 +68,30 @@ export default function Container() {
     setFilteredJobs(filtered)
   }
 
-  const departments = [...new Set(jobs.map((job) => job.department))]
-  const locations = [...new Set(jobs.map((job) => job.location.split(",")[0].trim()))]
-
-  // Filter jobs by active tab (department)
-  const jobsByTab = activeTab === "all"
-    ? jobs
-    : jobs.filter((job) => job.department === activeTab)
-
   const handleApplyClick = (job: Job) => {
     setSelectedJob(job)
     setIsApplicationFormOpen(true)
+  }
+
+  const handleOtherSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!otherInput.trim()) return;
+    // Open the application form with a custom job object
+    setSelectedJob({
+      id: "other",
+      title: otherInput,
+      department: "Others",
+      location: "Remote",
+      type: "Other",
+      description: `Custom position or skill: ${otherInput}`,
+      requirements: [],
+      benefits: [],
+      is_active: true,
+      created_at: new Date().toISOString(),
+    });
+    setIsApplicationFormOpen(true);
+    setOtherSuccess(false);
+    setOtherSubmitting(false);
   }
 
   if (loading) {
@@ -89,12 +105,12 @@ export default function Container() {
   return (
     <section id="jobs">
       <div className="w-11/12 mx-auto">
-          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="md:pb-6 pb-14">
-            <TabsList className="grid grid-cols-2 md:grid-cols-6 gap-2 mx-auto">
-              <TabsTrigger value="all" className="">
+          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="md:pb-0 pb-14">
+            <TabsList className="grid grid-cols-3 md:grid-cols-5 gap-2 mx-auto justify-center items-center md:pb-0 pb-28">
+              <TabsTrigger value="all">
                 View all
               </TabsTrigger>
-              {departments.map((dept) => (
+              {[...new Set(jobs.map((job) => job.department))].map((dept) => (
                 <TabsTrigger key={dept} value={dept} className="py-2 px-3">
                   {dept}
                 </TabsTrigger>
@@ -103,9 +119,9 @@ export default function Container() {
                 Others
               </TabsTrigger>
             </TabsList>
-            {(["all", ...departments]).map((tab) => (
+            {(["all", ...new Set(jobs.map((job) => job.department))]).map((tab) => (
               <TabsContent key={tab} value={tab}>
-                <div className="space-y-6 pt-36 md:pt-14">
+                <div className="space-y-6 md:pt-14 pt-0">
                   {jobs.filter(job => tab === "all" || job.department === tab).map((job) => (
                     <div
                       key={job.id}
@@ -116,7 +132,7 @@ export default function Container() {
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className="md:text-4xl text-2xl font-semibold text-[#101010]">{job.title}</h3>
                           </div>
-                          <p className="text-stone-500 line-clamp-2 w-9/12">{job.description}</p>
+                          <p className="text-stone-500 line-clamp-2 md:w-9/12">{job.description}</p>
                           <div className="flex gap-2">
                             <Badge className="mt-2 border-[1px] rounded-full px-2 text-[#101010] border-[#101010] md:text-[12px] text-[10px] flex items-center">
                               <MapPin/>
@@ -149,20 +165,31 @@ export default function Container() {
               </TabsContent>
             ))}
             <TabsContent key="others" value="others">
-              <div className="space-y-6 pt-36 md:pt-14">
+              <div className="space-y-6 pt-0 md:pt-14">
                 <div className="pt-10 pb-4 border-[#101010]/20 border-t-[1px]">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="md:text-4xl text-2xl font-semibold text-[#101010]">Other Position or Skill</h3>
                       </div>
-                      <p className="text-stone-500 w-9/12 mb-4">If you don&apos;t see a position or skill that matches your interest, let us know what you&apos;re looking for!</p>
-                      <input
-                        type="text"
-                        placeholder="Enter desired position or skill..."
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        // You may want to handle this input with state and submission logic
-                      />
+                      <p className="text-stone-500 md:w-9/12 mb-4">If you don't see a position or skill that matches your interest, let us know what you're looking for!</p>
+                      <form onSubmit={handleOtherSubmit}>
+                        <input
+                          type="text"
+                          value={otherInput}
+                          onChange={e => setOtherInput(e.target.value)}
+                          placeholder="Enter desired position or skill..."
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
+                        <button
+                          type="submit"
+                          disabled={otherSubmitting || !otherInput.trim()}
+                          className="mt-4 bg-[#101010] text-white px-4 py-2 rounded-md disabled:opacity-50"
+                        >
+                          {otherSubmitting ? "Submitting..." : "Submit"}
+                        </button>
+                      </form>
+                      {otherSuccess && <p className="text-green-600 mt-2">Thank you for your suggestion!</p>}
                     </div>
                   </div>
                 </div>

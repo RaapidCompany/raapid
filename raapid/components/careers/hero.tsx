@@ -131,7 +131,7 @@ export default function Hero() {
       </section>
 
       {/* Bottom Section */}
-      <section className="px-6 py-16 bg-white">
+      <section className="px-6 md:py-16 py-12 bg-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="mb-6 text-3xl font-bold text-gray-900">Your next big career move</h2>
           <p className="text-lg leading-relaxed text-gray-600">
