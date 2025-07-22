@@ -26,6 +26,7 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
     experienceYears: "",
     location: "",
     availability: "",
+    preferredSalary: "", // new field
   })
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -113,11 +114,11 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
         experience_years: Number.parseInt(formData.experienceYears) || 0,
         location: formData.location,
         availability: formData.availability,
-        // Interview answers
         technical: interviewAnswers.technical,
         behavioral: interviewAnswers.behavioral,
         situational: interviewAnswers.situational,
         motivation: interviewAnswers.motivation,
+        preferred_salary: formData.preferredSalary, // new field
       }
 
       const { error: insertError } = await supabase.from("job_applications").insert([applicationData])
@@ -337,6 +338,15 @@ export function JobApplicationForm({ job, isOpen, onClose }: JobApplicationFormP
                 placeholder="Why do you want to work here?"
                 rows={3}
                 required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Salary Range</label>
+              <Input
+                value={formData.preferredSalary}
+                onChange={(e) => handleInputChange("preferredSalary", e.target.value)}
+                placeholder="e.g. $40,000 - $60,000"
               />
             </div>
 

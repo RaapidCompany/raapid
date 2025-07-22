@@ -23,6 +23,7 @@ export interface JobApplication {
   behavioral?: string
   situational?: string
   motivation?: string
+  preferred_salary?: string
 }
 
 export interface Job {
@@ -37,6 +38,7 @@ export interface Job {
   salary_range?: string
   is_active: boolean
   created_at: string
+  preferredSalary?: string
 }
 export interface RiderApplication {
   id?: string

@@ -90,7 +90,7 @@ export default function Container() {
     <section id="jobs">
       <div className="w-11/12 mx-auto">
           <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="md:pb-6 pb-14">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 mx-auto">
+            <TabsList className="grid grid-cols-2 md:grid-cols-6 gap-2 mx-auto">
               <TabsTrigger value="all" className="">
                 View all
               </TabsTrigger>
@@ -99,6 +99,9 @@ export default function Container() {
                   {dept}
                 </TabsTrigger>
               ))}
+              <TabsTrigger value="others" className="py-2 px-3">
+                Others
+              </TabsTrigger>
             </TabsList>
             {(["all", ...departments]).map((tab) => (
               <TabsContent key={tab} value={tab}>
@@ -145,6 +148,26 @@ export default function Container() {
                 </div>
               </TabsContent>
             ))}
+            <TabsContent key="others" value="others">
+              <div className="space-y-6 pt-36 md:pt-14">
+                <div className="pt-10 pb-4 border-[#101010]/20 border-t-[1px]">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="md:text-4xl text-2xl font-semibold text-[#101010]">Other Position or Skill</h3>
+                      </div>
+                      <p className="text-stone-500 w-9/12 mb-4">If you don&apos;t see a position or skill that matches your interest, let us know what you&apos;re looking for!</p>
+                      <input
+                        type="text"
+                        placeholder="Enter desired position or skill..."
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                        // You may want to handle this input with state and submission logic
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
           </Tabs>
       </div>
 
