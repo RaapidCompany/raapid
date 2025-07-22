@@ -8,7 +8,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 // Types for our database tables
 export interface JobApplication {
   id?: string
-  job_id: string
+  job_id: string | null
   first_name: string
   last_name: string
   email: string
